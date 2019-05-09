@@ -1,4 +1,5 @@
 const express = require('express');
+const serveStatic = require( "serve-static" );
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const mongoose = require('mongoose');
@@ -9,6 +10,7 @@ const routes = require('./routes/routes.js');
 
 const app = express();
 
+app.use(express.static('public'));
 app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));

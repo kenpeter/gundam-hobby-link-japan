@@ -10,6 +10,9 @@ exports.oneRandomPic = (req, res, next) => {
       (err1, doc) => {
         if(err1)
           console.error(err);
+
+        // file is symbolic link in public
+        // e.g. img http://localhost:8000/files/ban951243/ban951243_1.png
         res.status(200).json(doc);
       });
   
