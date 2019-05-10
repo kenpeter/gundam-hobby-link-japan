@@ -1,0 +1,25 @@
+.ui.card {
+  width: 100%;
+}
+
+.ui.card .content {
+  height: 20vh;
+  text-align: center;
+}
+
+.homeImg img {
+  width: 100vw !important;
+  height: 80vh !important;
+  object-fit: cover;
+}
+
+.heart.icon {
+  font-size: 5em;
+  color: #f90909;
+  margin-top: 0.5em;
+  height: 0;
+}
+
+.num {
+  margin-top: 10px;
+}
