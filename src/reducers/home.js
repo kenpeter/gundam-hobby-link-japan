@@ -1,9 +1,8 @@
-import { getOneRandomPic, likeit } from "../api/product";
+import { getOnePic, likeit } from "../api/product";
 
 export const START_LOAD_HOME = "app/home/START_LOAD_HOME";
 export const LOAD_HOME_SUCCESS = "app/home/LOAD_HOME_SUCCESS";
 export const LOAD_HOME_FAIL = "app/home/LOAD_HOME_FAIL";
-export const LIKE_IT_SUCCESS = "app/home/LIKE_IT_SUCCESS";
 
 const initState = {
   data: [],
@@ -71,20 +70,10 @@ export const loadHomeFail = errors => {
   };
 };
 
-export const likeitSuccess = data => {
-  return {
-    type: LIKE_IT_SUCCESS,
-    data: [],
-    loading: false,
-    isError: false,
-    errors: ""
-  };
-};
-
-export const loadHomeAPI = () => {
+export const loadHomeAPI = id => {
   return dispatch => {
     dispatch(startLoadHome());
-    getOneRandomPic()
+    getOnePic(id)
       .then(res => {
         return res.json();
       })
@@ -105,7 +94,19 @@ export const likeitAPI = id => {
         return res.json();
       })
       .then(res => {
-        const data = res;
+        // need to full things
+        dispatch(startLoadHome());
+        getOnePic(id)
+          .then(res => {
+            return res.json();
+          })
+          .then(res => {
+            const data = res;
+            dispatch(loadHomeSuccess(data));
+          })
+          .catch(err => {
+            loadHomeFail(err);
+          });
       })
       .catch(err => {});
   };

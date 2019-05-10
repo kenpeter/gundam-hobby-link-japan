@@ -1,5 +1,5 @@
 const express = require("express");
-const serveStatic = require("serve-static");
+//const serveStatic = require("serve-static");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const mongoose = require("mongoose");

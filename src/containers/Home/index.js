@@ -7,11 +7,11 @@ import { loadHomeAPI, likeitAPI } from "../../reducers/home";
 class Home extends Component {
   componentDidMount() {
     /* eslint-disable react/destructuring-assignment */
-    this.props.loadHomeAPIProps();
+    this.props.loadHomeAPIProps("");
   }
 
   handleRefresh = () => {
-    this.props.loadHomeAPIProps();
+    this.props.loadHomeAPIProps("");
   };
 
   likeit = id => {
@@ -48,7 +48,7 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = dispatch => ({
-  loadHomeAPIProps: () => dispatch(loadHomeAPI()),
+  loadHomeAPIProps: id => dispatch(loadHomeAPI(id)),
   likeitAPIProps: id => dispatch(likeitAPI(id))
 });
 
