@@ -15,6 +15,7 @@ const Home = ({ data, handleRefresh, likeit }) => {
             <Card.Description>
               <i className="heart icon" onClick={() => likeit(data._id)} />
               <div className="num">{data.likeit}</div>
+              <div>Pull to refresh</div>
             </Card.Description>
           </Card.Content>
         </Card>
