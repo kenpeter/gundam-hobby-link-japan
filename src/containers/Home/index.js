@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 /* eslint-disable import/no-named-default */
 import { default as HomeComponent } from "../../components/Home";
-import { loadHomeAPI } from "../../reducers/home";
+import { loadHomeAPI, likeitAPI } from "../../reducers/home";
 
 class Home extends Component {
   componentDidMount() {
@@ -14,6 +14,10 @@ class Home extends Component {
     this.props.loadHomeAPIProps();
   };
 
+  likeit = id => {
+    this.props.likeitAPIProps(id);
+  };
+
   render() {
     const { data } = this.props;
 
@@ -22,7 +26,11 @@ class Home extends Component {
         {data.length === 0 ? (
           <p>Loading....</p>
         ) : (
-          <HomeComponent data={data} handleRefresh={this.handleRefresh} />
+          <HomeComponent
+            data={data}
+            handleRefresh={this.handleRefresh}
+            likeit={this.likeit}
+          />
         )}
       </div>
     );
@@ -40,7 +48,8 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = dispatch => ({
-  loadHomeAPIProps: () => dispatch(loadHomeAPI())
+  loadHomeAPIProps: () => dispatch(loadHomeAPI()),
+  likeitAPIProps: id => dispatch(likeitAPI(id))
 });
 
 export default connect(

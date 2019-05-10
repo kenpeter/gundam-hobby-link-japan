@@ -3,7 +3,7 @@ import { Card, Image } from "semantic-ui-react";
 import ReactPullToRefresh from "react-pull-to-refresh";
 import Config from "../../config.json";
 
-const Home = ({ data, handleRefresh }) => {
+const Home = ({ data, handleRefresh, likeit }) => {
   const imgUrl = Config.apiUrl + "/files/" + data.dirname + "/" + data.filename;
 
   return (
@@ -13,8 +13,8 @@ const Home = ({ data, handleRefresh }) => {
           <Image className="homeImg" src={imgUrl} wrapped ui={false} />
           <Card.Content>
             <Card.Description>
-              <i className="heart icon" />
-              <div className="num">1,200</div>
+              <i className="heart icon" onClick={() => likeit(data._id)} />
+              <div className="num">{data.likeit}</div>
             </Card.Description>
           </Card.Content>
         </Card>
