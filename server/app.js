@@ -15,8 +15,7 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.get("/api/oneRandomPic", routes.oneRandomPic);
-app.get("/api/onePic/:id", routes.onePic);
+app.get("/api/onePic/:id?", routes.onePic);
 app.get("/api/likeit/:id", routes.likeit);
 
 const server = app.listen(8000, function() {
